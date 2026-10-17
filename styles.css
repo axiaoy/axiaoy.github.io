@@ -154,11 +154,7 @@ section { padding: 84px 0; }
 .hero__links a:hover { color: var(--ink); }
 
 /* ---------- rotating chip ---------- */
-<<<<<<< HEAD
 .hero__visual { display: flex; align-items: center; justify-content: center; min-height: 300px; }
-=======
-.hero__visual { display: flex; align-items: center; justify-content: center; overflow: hidden; }
->>>>>>> 64615ce63cf372239d39059478dbb4183a6f0e46
 .chip-stage { position: relative; perspective: 1100px; width: 100%; display: flex; align-items: center; justify-content: center; }
 /* chip orientation is driven by the cursor (see script.js) */
 .chip-tilt {
