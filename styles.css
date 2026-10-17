@@ -39,7 +39,6 @@ body {
   font-size: 17px;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
 }
 
 .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
@@ -129,7 +128,7 @@ section { padding: 84px 0; }
 .nav__toggle span { width: 22px; height: 2px; background: var(--ink); }
 
 /* ============================================================ LANDING / HERO ============================================================ */
-.landing { min-height: calc(100vh - 67px); display: grid; align-content: center; padding: 48px 0 64px; }
+.landing { min-height: calc(100vh - 67px); display: grid; align-content: center; padding: 48px 28px 64px; }
 .hero {
   width: 100%;
   display: grid;
@@ -155,7 +154,7 @@ section { padding: 84px 0; }
 .hero__links a:hover { color: var(--ink); }
 
 /* ---------- rotating chip ---------- */
-.hero__visual { display: flex; align-items: center; justify-content: center; }
+.hero__visual { display: flex; align-items: center; justify-content: center; min-height: 300px; }
 .chip-stage { position: relative; perspective: 1100px; width: 100%; display: flex; align-items: center; justify-content: center; }
 /* chip orientation is driven by the cursor (see script.js) */
 .chip-tilt {
@@ -315,9 +314,9 @@ section { padding: 84px 0; }
 
 /* ============================================================ RESPONSIVE ============================================================ */
 @media (max-width: 860px) {
-  .landing { min-height: 0; padding: 20px 0 48px; }
+  .landing { min-height: 0; padding: 20px 28px 48px; }
   .hero { grid-template-columns: 1fr; gap: 28px; }
-  .hero__visual { order: -1; justify-content: flex-start; height: 210px; }
+  .hero__visual { order: -1; justify-content: center; min-height: 240px; }
   .about__grid { grid-template-columns: 1fr; gap: 26px; }
   .about__photo { max-width: 240px; }
   .resume__card { grid-template-columns: 1fr; gap: 36px; padding: 34px 26px; }
