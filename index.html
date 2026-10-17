@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Keep this site out of search engines (unlisted — reachable only via direct link) -->
+  <meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+
+  <title>Aleena Xiao</title>
+  <meta name="description" content="Aleena Xiao — Electrical & Computer Engineering at Cornell." />
+  <meta name="author" content="Aleena Xiao" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css?v=2" />
+</head>
+<body class="is-landing">
+
+  <!-- ============================ NAV ============================ -->
+  <header class="nav" id="top">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__brand">Aleena Xiao</a>
+      <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav__links">
+        <a href="projects.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="#" class="js-contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============================ LANDING ============================ -->
+  <main class="landing container">
+    <div class="hero">
+      <div class="hero__text">
+        <h1 class="hero__title">Aleena Xiao</h1>
+        <p class="hero__sub">Electrical &amp; Computer Engineering at Cornell.</p>
+        <p class="hero__lede">
+          I'm a passionate builer who designs circuit boards, builds and brings up robots, and writes the
+          software that runs them.
+        </p>
+        <p class="hero__cta">
+          <a href="projects.html">View my work →</a>
+          <a href="about.html">About me →</a>
+        </p>
+        <p class="hero__links">
+          <a href="https://github.com/axiaoy" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/aleena-xiao" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="#" class="js-contact">Email</a>
+        </p>
+      </div>
+
+      <!-- Rotating 3D chip (auto-spin). Decorative. -->
+      <div class="hero__visual" aria-hidden="true">
+        <div class="chip-stage">
+          <div class="chip-tilt">
+            <div class="chip-spin">
+              <div class="chip-face chip-front">
+                <span class="chip-pin1"></span>
+                <span class="chip-label">AX-2029<br /><b>ECE · AI</b></span>
+              </div>
+              <div class="chip-face chip-back">
+                <span class="chip-pin1"></span>
+                <span class="chip-label">AX-2029<br /><b>ECE · AI</b></span>
+              </div>
+              <div class="chip-face chip-right"></div>
+              <div class="chip-face chip-left"></div>
+              <div class="chip-face chip-top"></div>
+              <div class="chip-face chip-bottom"></div>
+              <div class="chip-pins chip-pins--l"></div>
+              <div class="chip-pins chip-pins--r"></div>
+            </div>
+          </div>
+          <div class="chip-shadow"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js?v=4"></script>
+</body>
+</html>
