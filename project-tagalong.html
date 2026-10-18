@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+
+  <title>Tagalong Robot Builder — Aleena Xiao</title>
+  <meta name="description" content="An open-source CLI tool that generates reusable Java robot subsystems from mechanism specifications." />
+  <meta name="author" content="Aleena Xiao" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css?v=7" />
+</head>
+<body>
+
+  <header class="nav" id="top">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__brand">Aleena Xiao</a>
+      <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav__links">
+        <a href="about.html">About</a>
+        <a href="projects.html" class="nav__active">Work</a>
+        <a href="#" class="js-contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="detail container">
+      <a class="detail__back" href="projects.html">← Work</a>
+
+      <div class="detail__head">
+        <h1 class="detail__title">Tagalong Robot Builder &amp; Library</h1>
+        <p class="detail__meta">Space Cookies Robotics · Co-Developer · 2024/25</p>
+        <ul class="tags">
+          <li>Java</li>
+          <li>CLI tooling</li>
+          <li>Open source</li>
+          <li>Testing</li>
+        </ul>
+      </div>
+
+      <div class="detail__media">
+        <img src="assets/projects/frc-robot.jpg" alt="Space Cookies competition robot 1868" style="object-position:center 22%" />
+      </div>
+
+      <div class="detail__body">
+        <p class="detail__lede">
+          Developed an open-source CLI tool that generates reusable Java robot subsystems
+          from mechanism specifications, reducing boilerplate and saving critical
+          development time during build season.
+        </p>
+        <ul class="detail__list">
+          <li>Integrated with WPILib robot projects and TagalongLib to generate configurable control code for mechanisms such as elevators, rollers, and pivots.</li>
+          <li>Built in per-robot configuration, unit tests, simulation support, and safety lockouts to improve reliability across competition and practice robots.</li>
+          <li>Enabled teams to begin command composition and robot-action development before hardware was fully operational.</li>
+          <li>Earned a regional Impact Award for contributions to the FRC community and open-source robotics tooling.</li>
+        </ul>
+        <p class="detail__links" style="margin-top:28px">
+          <a class="detail__back" href="https://github.com/team1868/TagalongRobotBuilder" target="_blank" rel="noopener">View the code ↗</a>
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="container footer__inner">
+      <div>
+        <p class="footer__label">Contact</p>
+        <a class="footer__email js-emailshow" href="#"></a>
+      </div>
+      <nav class="footer__links">
+        <a href="https://github.com/axiaoy" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/aleena-xiao" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="index.html">Home</a>
+      </nav>
+    </div>
+    <p class="footer__copy">© <span id="year"></span> Aleena Xiao</p>
+  </footer>
+
+  <script src="script.js?v=4"></script>
+</body>
+</html>

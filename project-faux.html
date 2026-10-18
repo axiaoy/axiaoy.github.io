@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+
+  <title>Front Auxiliary I/O Board — Aleena Xiao</title>
+  <meta name="description" content="A distributed front I/O hub for Cornell Electric Vehicles, on a CAN bus with a 48 V to 12 V synchronous buck." />
+  <meta name="author" content="Aleena Xiao" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css?v=7" />
+</head>
+<body>
+
+  <header class="nav" id="top">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__brand">Aleena Xiao</a>
+      <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav__links">
+        <a href="about.html">About</a>
+        <a href="projects.html" class="nav__active">Work</a>
+        <a href="#" class="js-contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="detail container">
+      <a class="detail__back" href="projects.html">← Work</a>
+
+      <div class="detail__head">
+        <h1 class="detail__title">Front Auxiliary I/O Board</h1>
+        <p class="detail__meta">Cornell Electric Vehicles · 2026</p>
+        <ul class="tags">
+          <li>Altium</li>
+          <li>CAN bus</li>
+          <li>Synchronous buck</li>
+          <li>Board bringup</li>
+        </ul>
+      </div>
+
+      <div class="detail__media detail__media--render">
+        <img src="assets/projects/faux-render.jpg" alt="Front auxiliary I/O board, 3D render" />
+      </div>
+
+      <div class="detail__body">
+        <p class="detail__lede">
+          Designed and brought up a distributed front-end I/O hub, replacing the
+          centralized auxiliary board architecture and reducing cross-vehicle wiring to
+          power and CAN.
+        </p>
+        <ul class="detail__list">
+          <li>Integrated CAN-based lighting/horn control and sensor feedback for steering angle and wheel RPM.</li>
+          <li>Designed a high-current 48 V to 12 V synchronous buck converter to power the horn, using external MOSFETs to handle current demands beyond what integrated regulators could support.</li>
+          <li>Derived switching frequency, inductor, and capacitor values from controller design equations; implemented downstream 5 V and 3.3 V LDO rails.</li>
+          <li>Selected robust sensors, including a Hall-effect absolute steering encoder that retains angle without homing after power loss and inductive wheel-speed sensors.</li>
+        </ul>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="container footer__inner">
+      <div>
+        <p class="footer__label">Contact</p>
+        <a class="footer__email js-emailshow" href="#"></a>
+      </div>
+      <nav class="footer__links">
+        <a href="https://github.com/axiaoy" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/aleena-xiao" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="index.html">Home</a>
+      </nav>
+    </div>
+    <p class="footer__copy">© <span id="year"></span> Aleena Xiao</p>
+  </footer>
+
+  <script src="script.js?v=4"></script>
+</body>
+</html>

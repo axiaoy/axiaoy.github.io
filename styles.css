@@ -229,6 +229,28 @@ section { padding: 84px 0; }
 }
 .project:hover { border-color: var(--clay); }
 
+/* clickable project card -> detail page (stretched-link pattern) */
+.project { position: relative; }
+.project--link { cursor: pointer; }
+.project__cover { position: absolute; inset: 0; z-index: 1; border-radius: 14px; }
+.project--link .project__links { position: relative; z-index: 2; }
+
+/* ============================================================ PROJECT DETAIL PAGE ============================================================ */
+.detail { padding-top: 40px; padding-bottom: 20px; }
+.detail__back { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--clay); transition: color .2s ease; }
+.detail__back:hover { color: var(--ink); }
+.detail__head { margin: 26px 0 28px; }
+.detail__title { font-family: var(--serif); font-size: clamp(32px, 5vw, 52px); font-weight: 500; letter-spacing: -0.01em; line-height: 1.04; margin-bottom: 12px; }
+.detail__meta { font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--clay); margin-bottom: 18px; }
+.detail__media { aspect-ratio: 16 / 9; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: #cdcdc9; margin-bottom: 36px; }
+.detail__media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.detail__media--render img { object-fit: contain; }
+.detail__body { max-width: 680px; }
+.detail__lede { font-size: 20px; color: var(--ink); line-height: 1.5; margin-bottom: 24px; }
+.detail__list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.detail__list li { position: relative; padding-left: 22px; color: var(--muted); font-size: 16.5px; line-height: 1.6; }
+.detail__list li::before { content: ""; position: absolute; left: 0; top: 10px; width: 7px; height: 7px; background: var(--clay); border-radius: 50%; }
+
 /* project image (full-bleed to the card edges) */
 .project__media {
   margin: -26px -26px 20px; aspect-ratio: 3 / 2; overflow: hidden;
