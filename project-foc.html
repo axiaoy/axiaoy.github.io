@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css?v=7" />
+  <link rel="stylesheet" href="styles.css?v=8" />
 </head>
 <body>
 
@@ -55,14 +55,34 @@
 
       <div class="detail__body">
         <p class="detail__lede">
-          Designed a three-phase current-sensing board to support the drivetrain's
-          transition from trapezoidal control to field-oriented control (FOC).
+          A three-phase current-sensing board that moves the drivetrain to isolated,
+          low-latency phase-current sensing for the transition to field-oriented control.
         </p>
-        <ul class="detail__list">
-          <li>Selected isolated, closed-loop current transducers that measure phase currents in place of shunt resistors, preventing shunt losses to the 48 V power path.</li>
-          <li>Prioritized high bandwidth and low latency to support accurate, cycle-by-cycle current feedback for FOC.</li>
-          <li>Integrated a shared precision voltage reference across all three channels to maintain consistent offsets and improve measurement alignment for Clarke/Park transforms.</li>
-        </ul>
+
+        <h2 class="detail__subhead">Motivation</h2>
+        <p>
+          I designed the current-sensing board that enables our team's transition from
+          trapezoidal commutation to field-oriented control (FOC), which reduces torque
+          ripple and improves motor efficiency. FOC runs Clarke and Park transforms on all
+          three phase currents every PWM cycle to regulate torque and flux independently,
+          so its performance depends on how cleanly those currents are measured.
+        </p>
+
+        <h2 class="detail__subhead">Sensing approach</h2>
+        <p>
+          I evaluated and rejected sensorless back-EMF estimation, which fails at
+          standstill, and shunt resistors, which add power loss and pick up switching
+          noise. Instead, I chose closed-loop current transducers that the phase wires
+          pass straight through. This isolates the measurement from the 48 V power stage,
+          adds no loss to the drive path, and has enough bandwidth that sensing adds
+          negligible lag to the current loop.
+        </p>
+
+        <h2 class="detail__subhead">Shared reference</h2>
+        <p>
+          All three channels share a precision voltage reference, so their offsets track
+          together and don't skew the transform.
+        </p>
       </div>
     </article>
   </main>

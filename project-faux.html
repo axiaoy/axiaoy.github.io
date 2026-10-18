@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css?v=7" />
+  <link rel="stylesheet" href="styles.css?v=8" />
 </head>
 <body>
 
@@ -55,16 +55,36 @@
 
       <div class="detail__body">
         <p class="detail__lede">
-          Designed and brought up a distributed front-end I/O hub, replacing the
-          centralized auxiliary board architecture and reducing cross-vehicle wiring to
-          power and CAN.
+          A distributed front I/O board that moves lighting, horn, steering, and
+          wheel-speed electronics onto the CAN bus, with a custom 48 V to 12 V synchronous
+          buck to drive the horn.
         </p>
-        <ul class="detail__list">
-          <li>Integrated CAN-based lighting/horn control and sensor feedback for steering angle and wheel RPM.</li>
-          <li>Designed a high-current 48 V to 12 V synchronous buck converter to power the horn, using external MOSFETs to handle current demands beyond what integrated regulators could support.</li>
-          <li>Derived switching frequency, inductor, and capacitor values from controller design equations; implemented downstream 5 V and 3.3 V LDO rails.</li>
-          <li>Selected robust sensors, including a Hall-effect absolute steering encoder that retains angle without homing after power loss and inductive wheel-speed sensors.</li>
-        </ul>
+
+        <h2 class="detail__subhead">Architecture</h2>
+        <p>
+          I designed, laid out, and brought up our vehicle's front auxiliary I/O board,
+          replacing the single central auxiliary board used in previous years with a
+          distributed architecture. Placing the electronics beside the loads they control
+          cut the cross-vehicle harness down to power and the CAN bus. The board receives
+          lighting and horn commands over CAN and publishes steering angle and wheel speed
+          back onto the bus.
+        </p>
+
+        <h2 class="detail__subhead">Power</h2>
+        <p>
+          The horn's current draw exceeded what integrated regulators can practically
+          deliver from a 48 V input, so I designed a 48 V to 12 V synchronous buck around a
+          controller with external MOSFETs, deriving the switching frequency, inductor, and
+          capacitors from the controller's design equations. I sized it with current and
+          voltage margin and followed it with LDOs for the 5 V and 3.3 V rails.
+        </p>
+
+        <h2 class="detail__subhead">Sensing</h2>
+        <p>
+          I selected the sensors for robustness: a non-contact Hall-effect absolute encoder
+          keeps the true steering angle through power loss without homing, and inductive
+          proximity sensors measure wheel RPM.
+        </p>
       </div>
     </article>
   </main>
