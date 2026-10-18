@@ -65,9 +65,18 @@
           I designed, laid out, and brought up our vehicle's front auxiliary I/O board,
           replacing the single central auxiliary board used in previous years with a
           distributed architecture. Placing the electronics beside the loads they control
-          cut the cross-vehicle harness down to power and the CAN bus. The board receives
+          cut the cross-vehicle harness down to power and the CAN bus. The board is built
+          around a Raspberry Pi Pico with a CAN controller on its SPI bus; it receives
           lighting and horn commands over CAN and publishes steering angle and wheel speed
           back onto the bus.
+        </p>
+
+        <h2 class="detail__subhead">Load switching</h2>
+        <p>
+          Each 12 V load is switched low-side from a Pico GPIO. The headlights and
+          indicators use NVR5198NLT3G MOSFETs and the horn uses a larger IPD50N06S2L-13.
+          Every gate is driven through a 100 Ω series resistor with a 10 kΩ pulldown, and a
+          B560C Schottky diode clamps the horn's inductive kickback.
         </p>
 
         <h2 class="detail__subhead">Power</h2>
@@ -81,9 +90,11 @@
 
         <h2 class="detail__subhead">Sensing</h2>
         <p>
-          Robust sensors were selected, including a non-contact Hall-effect absolute encoder, which 
+          Robust sensors were selected, including a non-contact Hall-effect absolute encoder, which
           keeps the true steering angle through power loss without homing, and inductive
-          proximity sensors measure wheel RPM.
+          proximity sensors measure wheel RPM. The two RPM signals are divided from 12 V
+          down to the Pico's logic level, and the steering output is divided into one of the
+          Pico's ADC inputs.
         </p>
       </div>
     </article>

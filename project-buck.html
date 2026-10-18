@@ -55,15 +55,26 @@
 
       <div class="detail__body">
         <p class="detail__lede">
-          Designed a standalone synchronous buck converter to power the competition
-          vehicle's horn.
+          A standalone 48 V to 12 V buck converter, taken from schematic through layout,
+          build, and bring-up.
         </p>
-        <ul class="detail__list">
-          <li>Created the full schematic and PCB layout in Altium.</li>
-          <li>Soldered and reworked the board; validated power delivery, ground planes, signal behavior, and loaded operation.</li>
-          <li>Used thermal imaging to monitor component temperatures and verify thermal performance under load.</li>
-          <li>Designed flexible power-rail connections to support clip-on connections and direct soldering.</li>
-        </ul>
+
+        <h2 class="detail__subhead">Design</h2>
+        <p>
+          The converter is built around a TI LM5013 (LM5013DDAR) with a Würth 7447706330
+          power inductor, an MBRS3100T3G Schottky, and ceramic plus polymer output
+          filtering. A 100 kΩ / 11 kΩ feedback divider sets the 12 V output, and the
+          on-time and enable resistors configure the regulator from the 48 V input.
+        </p>
+
+        <h2 class="detail__subhead">Build and validation</h2>
+        <p>
+          I created the full schematic and PCB layout in Altium, then soldered and reworked
+          the board and validated power delivery, ground planes, signal behavior, and loaded
+          operation. I used thermal imaging to monitor component temperatures and confirm
+          thermal performance under load, and designed flexible power-rail connections that
+          support both clip-on and direct-solder hookups.
+        </p>
       </div>
     </article>
   </main>
