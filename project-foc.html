@@ -72,16 +72,31 @@
         <p>
           I evaluated and rejected sensorless back-EMF estimation, which fails at
           standstill, and shunt resistors, which add power loss and pick up switching
-          noise. Instead, I chose closed-loop current transducers that the phase wires
-          pass straight through. This isolates the measurement from the 48 V power stage,
-          adds no loss to the drive path, and has enough bandwidth that sensing adds
-          negligible lag to the current loop.
+          noise. Instead, I used isolated closed-loop current transducers, one LEM
+          LZSR 200-P/SP1 per phase, with the phase conductor routed straight through each.
+          This isolates the measurement from the 48 V power stage, adds no loss to the
+          drive path, and keeps enough bandwidth that sensing adds negligible lag to the
+          current loop.
+        </p>
+        <p>
+          Each transducer output is biased around a 2.5 V mid-rail, so both directions of
+          phase current are captured, and its overcurrent-detect (OCD) output is brought
+          out but left unpopulated on this revision.
         </p>
 
         <h2 class="detail__subhead">Shared reference</h2>
         <p>
-          All three channels share a precision voltage reference, so their offsets track
-          together and don't skew the transform.
+          The 2.5 V bias comes from an Analog Devices ADR3425 precision reference, wired
+          with its force and sense (Kelvin) outputs so the voltage stays accurate at the
+          point of use. One reference feeds the reference input of all three channels, so
+          their offsets track together and don't skew the Clarke and Park transforms.
+        </p>
+
+        <h2 class="detail__subhead">Board</h2>
+        <p>
+          The sensing front end runs from a 5 V supply. 48 V and ground come in on the
+          power connector, and the three phase-current outputs go out to the motor
+          controller on a separate connector.
         </p>
       </div>
     </article>
