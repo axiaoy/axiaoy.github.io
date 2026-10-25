@@ -4,86 +4,218 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Keep this site out of search engines (unlisted — reachable only via direct link) -->
+  <!-- Keep this site out of search engines (unlisted, reachable only via direct link) -->
   <meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
 
   <title>Aleena Xiao</title>
-  <meta name="description" content="Aleena Xiao — Electrical & Computer Engineering at Cornell." />
+  <meta name="description" content="Aleena Xiao, Electrical & Computer Engineering at Cornell. Hardware, PCB design, robotics, embedded controls." />
   <meta name="author" content="Aleena Xiao" />
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css?v=8" />
+  <link rel="stylesheet" href="styles.css?v=18" />
 </head>
-<body class="is-landing">
+<body>
+<div class="wrap">
 
-  <!-- ============================ NAV ============================ -->
-  <header class="nav" id="top">
-    <div class="container nav__inner">
-      <a href="index.html" class="nav__brand">Aleena Xiao</a>
-      <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="nav__links">
-        <a href="about.html">About</a>
-        <a href="projects.html">Work</a>
-        <a href="#" class="js-contact">Contact</a>
-      </nav>
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="side">
+    <div class="ic-wrap" id="icWrap" title="hover me">
+      <canvas id="ic" width="264" height="264"></canvas>
     </div>
-  </header>
 
-  <!-- ============================ LANDING ============================ -->
-  <main class="landing container">
-    <div class="hero">
-      <div class="hero__text">
-        <h1 class="hero__title">Aleena Xiao</h1>
-        <p class="hero__sub">Electrical &amp; Computer Engineering at Cornell.</p>
-        <p class="hero__lede">
-          I'm a passionate builder who designs circuit boards, builds and brings up robots, and writes the
-          software that runs them.
-        </p>
-        <p class="hero__cta">
-          <a href="about.html">About me →</a>
-          <a href="projects.html">View my work →</a>
-        </p>
-        <p class="hero__links">
-          <a href="https://www.linkedin.com/in/aleena-xiao" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="#" class="js-contact">Email</a>
-          <a href="https://github.com/axiaoy" target="_blank" rel="noopener">GitHub</a>
-        </p>
+    <h1 class="name">Aleena Xiao</h1>
+    <p class="role">Electrical &amp; Computer Engineering<br/>Cornell University ’29</p>
+
+    <nav class="side-nav">
+      <a href="#about"><span class="n">01</span> About</a>
+      <a href="#experience"><span class="n">02</span> Experience</a>
+      <a href="#projects"><span class="n">03</span> Projects</a>
+      <a href="#contact"><span class="n">04</span> Contact</a>
+    </nav>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+
+    <!-- 01 ABOUT -->
+    <section id="about" class="about">
+      <div class="shead"><span class="idx">01</span><h2>About</h2><span class="rule"></span></div>
+      <img class="about__photo" src="assets/profile.jpg" alt="Portrait of Aleena Xiao" />
+      <p class="lead">I am passionate about taking on engineering problems and developing solutions to solve them: schematic and layout to board, complex scoring routines on a competition robot, and experimenting with new methods.</p>
+      <p class="body">
+        I build electrical systems with Cornell Electric Vehicles to engineer hyper-efficient autonomous vehicles for the Shell Eco-marathon Americas, interned on robotics hardware at a Y Combinator (S25) and NVIDIA Inception backed robotics startup in SF, and spent three years developing competitive robotics software at Space Cookies (team partnered with NASA + Girl Scouts). I study Electrical &amp; Computer Engineering at Cornell.
+      </p>
+    </section>
+
+    <!-- 02 EXPERIENCE -->
+    <section id="experience">
+      <div class="shead"><span class="idx">02</span><h2>Experience</h2><span class="rule"></span></div>
+      <div class="entry">
+        <span class="e-role"><span class="e-title">Electrical Member</span>, <span class="e-org">Cornell Electric Vehicles</span></span>
+        <span class="e-date">2025 – now</span>
+      </div>
+      <div class="entry">
+        <span class="e-role"><span class="e-title">Robotics Hardware Intern</span>, <span class="e-org">Robotics Center of Silicon Valley</span></span>
+        <span class="e-date">2026</span>
+      </div>
+      <div class="entry">
+        <span class="e-role"><span class="e-title">Circuits Course Assistant</span>, <span class="e-org">Cornell ECE Department</span></span>
+        <span class="e-date">2026 – now</span>
+      </div>
+      <div class="entry">
+        <span class="e-role"><span class="e-title">Programming Director</span>, <span class="e-org">Space Cookies · FRC 1868</span></span>
+        <span class="e-date">2022–25</span>
       </div>
 
-      <!-- Rotating 3D chip (auto-spin). Decorative. -->
-      <div class="hero__visual" aria-hidden="true">
-        <div class="chip-stage">
-          <div class="chip-tilt">
-            <div class="chip-spin">
-              <div class="chip-face chip-front">
-                <span class="chip-pin1"></span>
-                <span class="chip-label">AX-2029<br /><b>ECE · AI</b></span>
-              </div>
-              <div class="chip-face chip-back">
-                <span class="chip-pin1"></span>
-                <span class="chip-label">AX-2029<br /><b>ECE · AI</b></span>
-              </div>
-              <div class="chip-face chip-right"></div>
-              <div class="chip-face chip-left"></div>
-              <div class="chip-face chip-top"></div>
-              <div class="chip-face chip-bottom"></div>
-              <div class="chip-pins chip-pins--l"></div>
-              <div class="chip-pins chip-pins--r"></div>
-            </div>
-          </div>
-          <div class="chip-shadow"></div>
+      <div class="course__label" style="margin-top:30px">Skills</div>
+      <dl class="about__extra" style="margin-top:8px">
+        <div class="skillrow"><dt>Hardware</dt><dd>Altium · Schematic capture · Board bring-up · LTspice · Power electronics · Soldering / rework · Oscilloscopes</dd></div>
+        <div class="skillrow"><dt>Digital</dt><dd>Verilog · SystemVerilog · RTL design · FPGA / Quartus · Timing analysis · Testbenches</dd></div>
+        <div class="skillrow"><dt>Embedded</dt><dd>STM32 · CAN · I²C / SPI / UART · Motor control (FOC) · PID · Sensor integration</dd></div>
+        <div class="skillrow"><dt>Languages</dt><dd>Python · C++ · Java · Git</dd></div>
+      </dl>
+
+      <div class="course">
+        <div class="course__label">Relevant coursework</div>
+        <div class="course__list">
+          ECE 2300 Analog Circuits · ECE 2100 Digital Logic &amp; Computer Org · ECE 3250 Signals &amp; Systems ·
+          CS 1110 Computer Science · MATH 2940 Linear Algebra · MATH 2930 Differential Equations ·
+          PHYS 2213 E&amp;M · PHYS 1112 Mechanics &amp; Heat · MATH 1920 Multivariable Calculus
         </div>
       </div>
-    </div>
-  </main>
+    </section>
 
-  <script src="script.js?v=4"></script>
+    <!-- 03 PROJECTS -->
+    <section id="projects">
+      <div class="shead"><span class="idx">03</span><h2>Projects</h2><span class="rule"></span></div>
+
+      <p class="cat">Hardware &amp; PCB</p>
+      <details class="proj">
+        <summary>
+          <span class="e-role"><span class="e-title">Front Auxiliary I/O Board</span>, <span class="e-org">Cornell Electric Vehicles</span></span>
+          <span class="e-date">2026</span><span class="p-plus"></span>
+        </summary>
+        <div class="p-detail">
+          <p class="p-blurb">An I/O board for the front of the competition vehicle. It has a 48 to 12 V buck, controls the lighting systems and horn, and powers sensors and reads their data.</p>
+          <a class="p-link" href="project-faux.html">Learn more →</a>
+        </div>
+      </details>
+      <details class="proj">
+        <summary>
+          <span class="e-role"><span class="e-title">FOC Current Sense Board</span>, <span class="e-org">Cornell Electric Vehicles</span></span>
+          <span class="e-date">2026</span><span class="p-plus"></span>
+        </summary>
+        <div class="p-detail">
+          <p class="p-blurb">A current-sense board with isolated closed-loop transducers instead of shunt resistors, so there are no shunt losses on the 48 V line, and it lets the team move from trapezoidal control to field-oriented control.</p>
+          <a class="p-link" href="project-foc.html">Learn more →</a>
+        </div>
+      </details>
+      <details class="proj">
+        <summary>
+          <span class="e-role"><span class="e-title">48 to 12 V Buck Converter</span>, <span class="e-org">Cornell Electric Vehicles</span></span>
+          <span class="e-date">2025</span><span class="p-plus"></span>
+        </summary>
+        <div class="p-detail">
+          <p class="p-blurb">A standalone 48 to 12 V buck converter built around a TI LM5013, used for the horn on the competition vehicle. I did the schematic, layout, soldering, and bring-up in Altium.</p>
+          <a class="p-link" href="project-buck.html">Learn more →</a>
+        </div>
+      </details>
+      <details class="proj">
+        <summary>
+          <span class="e-role"><span class="e-title">Analog Design &amp; Characterization</span>, <span class="e-org">Cornell ECE Labs</span></span>
+          <span class="e-date">2026</span><span class="p-plus"></span>
+        </summary>
+        <div class="p-detail">
+          <p class="p-blurb">A sixth-order op-amp bandpass filter that pulled a hidden word out of a modulated audio signal. I also reverse-engineered unknown RLC boxes and characterized R-2R and binary-weighted DACs.</p>
+        </div>
+      </details>
+
+      <p class="cat">Robotics &amp; Control</p>
+      <details class="proj">
+        <summary>
+          <span class="e-role"><span class="e-title">Robot Bring-Up &amp; Teleoperation</span>, <span class="e-org">Robotics Center of Silicon Valley</span></span>
+          <span class="e-date">2026</span><span class="p-plus"></span>
+        </summary>
+        <div class="p-detail">
+          <p class="p-blurb">I found and fixed motor, circuit, and wiring faults on the custom M1 Mobile Manipulator robot, then teleoperated more than six robot platforms, including arms, hands, and gloves, for live demos.</p>
+        </div>
+      </details>
+      <details class="proj">
+        <summary>
+          <span class="e-role"><span class="e-title">OpenArm Electrician &amp; Data Collection</span>, <span class="e-org">Robotics Center of Silicon Valley</span></span>
+          <span class="e-date">2026</span><span class="p-plus"></span>
+        </summary>
+        <div class="p-detail">
+          <p class="p-blurb">I assembled, wired, and tested OpenArm robots over CAN, and built a data-collection pipeline. I checked each unit before demos and shipments.</p>
+        </div>
+      </details>
+      <details class="proj">
+        <summary>
+          <span class="e-role"><span class="e-title">Bimanual Inverse Kinematics</span>, <span class="e-org">Robotics Center of Silicon Valley</span></span>
+          <span class="e-date">2026</span><span class="p-plus"></span>
+        </summary>
+        <div class="p-detail">
+          <p class="p-blurb">An inverse-kinematics module that coordinates a two-arm system, used for teleoperation and data collection.</p>
+        </div>
+      </details>
+      <details class="proj">
+        <summary>
+          <span class="e-role"><span class="e-title">FRC Robot &amp; Autonomy</span>, <span class="e-org">Space Cookies · FRC 1868</span></span>
+          <span class="e-date">2022–25</span><span class="p-plus"></span>
+        </summary>
+        <div class="p-detail">
+          <p class="p-blurb">As a programming director of a team of more than 50, I wrote command-based control software: PID and feedforward tuning, autonomous scoring from odometry, and anti-scrub drivetrain control. We qualified for Worlds twice.</p>
+        </div>
+      </details>
+
+      <p class="cat">Digital &amp; Software</p>
+      <details class="proj">
+        <summary>
+          <span class="e-role"><span class="e-title">Two Function Calculator + 16-Bit Adder Datapath on FPGA</span>, <span class="e-org">Cornell ECE 2300</span></span>
+          <span class="e-date">2026</span><span class="p-plus"></span>
+        </summary>
+        <div class="p-detail">
+          <p class="p-blurb">Verilog adders (gate-level, carry-select, and RTL) synthesized in Quartus and compared on area and timing. I verified them with directed, randomized, and X-propagation testbenches.</p>
+        </div>
+      </details>
+      <details class="proj">
+        <summary>
+          <span class="e-role"><span class="e-title">Tagalong Robot Builder</span>, <span class="e-org">Space Cookies Robotics</span></span>
+          <span class="e-date">2024–25</span><span class="p-plus"></span>
+        </summary>
+        <div class="p-detail">
+          <p class="p-blurb">An open-source CLI that generates robot control code from mechanism specs, which saved weeks of setup during build season.</p>
+          <a class="p-link" href="project-tagalong.html">Learn more →</a>
+        </div>
+      </details>
+    </section>
+
+    <!-- 04 CONTACT -->
+    <section id="contact">
+      <div class="shead"><span class="idx">04</span><h2>Contact</h2><span class="rule"></span></div>
+      <div class="contact">
+        <p class="big"><a class="footer__email js-emailshow" href="#"></a></p>
+        <div class="clinks">
+          <a href="https://www.linkedin.com/in/aleena-xiao" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.8-2.05 3.7-2.05 3.96 0 4.69 2.6 4.69 5.98V21h-4v-5.3c0-1.26-.02-2.9-1.76-2.9-1.76 0-2.03 1.37-2.03 2.8V21H9z"/></svg>LinkedIn</a>
+          <a href="https://github.com/axiaoy" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85l-.01 2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>GitHub</a>
+          <a href="#" class="js-contact">Copy email</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="bitfoot" aria-hidden="true">
+  <canvas id="bits"></canvas>
+  <div class="bitfoot__cap">© <span id="year"></span> Aleena Xiao</div>
+</footer>
+
+<script src="script.js?v=7"></script>
 </body>
 </html>

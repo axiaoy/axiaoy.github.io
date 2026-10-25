@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mockup A v4 — Symbol IC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#FCFCFC; --ink:#161618; --muted:#6a6a70; --faint:#a3a3a9;
+    --line:#ededee; --hair:#e4e4e6; --accent:#D92D1E;
+    --sans:"Hanken Grotesk",system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;line-height:1.5;}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:72px 48px 120px;
+    display:grid;grid-template-columns:272px 1fr;gap:88px;}
+
+  /* ================= SIDEBAR ================= */
+  .side{position:sticky;top:72px;align-self:start;}
+  .ic-wrap{width:132px;height:132px;margin:0 0 28px -8px;cursor:pointer;}
+  .ic-wrap canvas{width:132px;height:132px;display:block}
+
+  .name{font-size:29px;font-weight:600;letter-spacing:-.022em;line-height:1.05;}
+  .role{color:var(--muted);font-size:14.5px;margin-top:12px;line-height:1.5;}
+  .focus{font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;color:var(--muted);
+    text-transform:uppercase;margin-top:22px;line-height:1.9;}
+  .focus b{color:var(--ink);font-weight:500}
+
+  .nav{margin-top:30px;display:flex;flex-direction:column;gap:11px;}
+  .nav a{display:flex;align-items:center;gap:11px;color:var(--muted);font-size:14.5px;transition:color .15s;width:fit-content;}
+  .nav a .n{font-family:var(--mono);font-size:11px;color:var(--faint);}
+  .nav a:hover{color:var(--ink)}
+  .nav a:hover .n{color:var(--accent)}
+
+  .loc{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:34px;letter-spacing:.02em;}
+
+  /* ================= SECTIONS ================= */
+  .shead{display:flex;align-items:baseline;gap:16px;margin:0 0 26px;}
+  .shead .idx{font-family:var(--mono);font-size:12px;color:var(--faint);}
+  .shead h2{font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);}
+  .shead .rule{flex:1;height:1px;background:var(--hair);align-self:center;}
+
+  section{margin-bottom:76px;scroll-margin-top:72px}
+  section:last-child{margin-bottom:0}
+
+  /* About */
+  .about .lead{font-size:21px;font-weight:600;line-height:1.4;letter-spacing:-.018em;
+    color:var(--ink);max-width:22ch;margin-bottom:18px;}
+  .about .body{font-size:15.5px;line-height:1.7;color:var(--muted);max-width:60ch;}
+
+  /* Experience */
+  .xp{display:grid;grid-template-columns:118px 1fr;gap:4px 24px;padding:15px 0;border-top:1px solid var(--line);}
+  .xp:last-child{border-bottom:1px solid var(--line)}
+  .xp__date{font-family:var(--mono);font-size:12px;color:var(--faint);padding-top:3px;}
+  .xp__title{font-size:16px;font-weight:600;letter-spacing:-.01em;}
+  .xp__org{color:var(--muted);font-weight:400}
+
+  /* Projects */
+  .cat{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--accent);margin:30px 0 4px;}
+  details.proj{border-top:1px solid var(--line);}
+  .proj:last-of-type{border-bottom:1px solid var(--line)}
+  .proj > summary{list-style:none;cursor:pointer;display:grid;
+    grid-template-columns:1fr 64px;gap:22px;align-items:center;padding:18px 0;}
+  .proj > summary::-webkit-details-marker{display:none}
+  .p-head{display:flex;align-items:baseline;gap:10px}
+  .p-title{font-size:17px;font-weight:600;letter-spacing:-.012em;}
+  .p-year{font-family:var(--mono);font-size:11.5px;color:var(--faint);margin-left:auto;padding-left:14px;}
+  .p-org{color:var(--muted);font-size:14px;margin-top:3px}
+  .p-thumb{width:64px;height:48px;overflow:hidden;border:1px solid var(--hair);background:#f3f3f4;}
+  .p-thumb img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(.96);transition:filter .3s;}
+  .p-thumb.is-render img{object-fit:contain;padding:3px;background:#fff;filter:grayscale(.5)}
+  .proj:hover .p-thumb img,.proj[open] .p-thumb img{filter:none}
+  .proj[open] > summary{padding-bottom:10px}
+
+  .p-body{display:grid;grid-template-columns:1fr 288px;gap:30px;padding:0 0 30px;align-items:start;
+    animation:fade .35s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  .p-body p{color:var(--muted);font-size:15px;line-height:1.68;max-width:52ch;}
+  .p-figure{overflow:hidden;border:1px solid var(--hair);background:#f3f3f4;aspect-ratio:4/3;}
+  .p-figure img{width:100%;height:100%;object-fit:cover}
+  .p-figure.is-render img{object-fit:contain;padding:14px;background:#fff}
+  .p-meta{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:16px;letter-spacing:.01em;}
+  .p-link{display:inline-flex;align-items:center;gap:6px;margin-top:18px;color:var(--ink);
+    font-size:13.5px;font-weight:500;border-bottom:1px solid var(--ink);padding-bottom:2px;transition:.15s}
+  .p-link:hover{color:var(--accent);border-color:var(--accent)}
+
+  /* Contact */
+  .contact{display:flex;flex-direction:column;gap:18px}
+  .contact .big{font-size:23px;font-weight:500;letter-spacing:-.015em;}
+  .contact .big a{border-bottom:1px solid var(--hair);transition:border-color .15s}
+  .contact .big a:hover{border-color:var(--accent)}
+  .clinks{display:flex;gap:26px;font-family:var(--mono);font-size:12.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted)}
+  .clinks a{display:inline-flex;align-items:center;gap:7px;transition:color .15s}
+  .clinks a:hover{color:var(--ink)}
+  .clinks svg{width:15px;height:15px}
+
+  @media(max-width:860px){
+    .wrap{grid-template-columns:1fr;gap:44px;padding:44px 24px 80px}
+    .side{position:static}
+    .p-body{grid-template-columns:1fr;gap:16px}
+    .p-figure{order:-1;max-width:400px}
+    .about .lead{max-width:none}
+    .xp{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="side">
+    <div class="ic-wrap" id="icWrap" title="hover me">
+      <canvas id="ic" width="264" height="264"></canvas>
+    </div>
+
+    <h1 class="name">Aleena Xiao</h1>
+    <p class="role">Electrical &amp; Computer Engineering<br/>Cornell University ’29</p>
+    <p class="focus"><b>Hardware · PCB</b><br/>Robotics · Embedded controls</p>
+
+    <nav class="nav">
+      <a href="#about"><span class="n">01</span> About</a>
+      <a href="#experience"><span class="n">02</span> Experience</a>
+      <a href="#projects"><span class="n">03</span> Projects</a>
+      <a href="#contact"><span class="n">04</span> Contact</a>
+    </nav>
+
+    <p class="loc">ITHACA, NY → SF</p>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+
+    <!-- 01 ABOUT -->
+    <section id="about" class="about">
+      <div class="shead"><span class="idx">01</span><h2>About</h2><span class="rule"></span></div>
+      <p class="lead">I design circuit boards, bring up robots, and write the software that runs them.</p>
+      <p class="body">
+        I like taking an engineering problem from schematic and layout all the way to a working board —
+        and the control software that runs on top of it. I build electrical systems with Cornell Electric
+        Vehicles for the Shell Eco-marathon, interned on robotics hardware at a YC- and NVIDIA-Inception-backed
+        startup in SF, and spent three years writing competitive robotics software at Space Cookies.
+      </p>
+    </section>
+
+    <!-- 02 EXPERIENCE -->
+    <section id="experience">
+      <div class="shead"><span class="idx">02</span><h2>Experience</h2><span class="rule"></span></div>
+      <div class="xp">
+        <div class="xp__date">2025 — NOW</div>
+        <div><span class="xp__title">Electrical Member</span>, <span class="xp__org">Cornell Electric Vehicles</span></div>
+      </div>
+      <div class="xp">
+        <div class="xp__date">JUN–AUG 2026</div>
+        <div><span class="xp__title">Robotics Hardware Intern</span>, <span class="xp__org">Robotics Center of Silicon Valley</span></div>
+      </div>
+      <div class="xp">
+        <div class="xp__date">2026 — NOW</div>
+        <div><span class="xp__title">Circuits Course Assistant</span>, <span class="xp__org">Cornell ECE Department</span></div>
+      </div>
+      <div class="xp">
+        <div class="xp__date">2022–2025</div>
+        <div><span class="xp__title">Programming Director</span>, <span class="xp__org">Space Cookies · FRC 1868</span></div>
+      </div>
+    </section>
+
+    <!-- 03 PROJECTS -->
+    <section id="projects">
+      <div class="shead"><span class="idx">03</span><h2>Projects</h2><span class="rule"></span></div>
+
+      <p class="cat">Hardware &amp; PCB</p>
+      <details class="proj" open>
+        <summary>
+          <div>
+            <div class="p-head"><span class="p-title">Front Auxiliary I/O Board</span><span class="p-year">2026</span></div>
+            <div class="p-org">Cornell Electric Vehicles</div>
+          </div>
+          <span class="p-thumb is-render"><img src="../assets/projects/faux-render.jpg" alt=""/></span>
+        </summary>
+        <div class="p-body">
+          <div>
+            <p>Replaced a single central auxiliary board with a distributed architecture built around a Raspberry Pi Pico and a CAN controller. Low-side MOSFETs switch headlights, indicators, and the horn; inductive and Hall sensors report wheel speed and steering angle back onto the bus.</p>
+            <div class="p-meta">Altium · CAN bus · Synchronous buck · Board bring-up</div>
+            <a class="p-link" href="../project-faux.html">Learn more →</a>
+          </div>
+          <div class="p-figure is-render"><img src="../assets/projects/faux-render.jpg" alt=""/></div>
+        </div>
+      </details>
+      <details class="proj">
+        <summary>
+          <div>
+            <div class="p-head"><span class="p-title">FOC Current Sense Board</span><span class="p-year">2026</span></div>
+            <div class="p-org">Cornell Electric Vehicles</div>
+          </div>
+          <span class="p-thumb is-render"><img src="../assets/projects/foc-render.jpg" alt=""/></span>
+        </summary>
+        <div class="p-body">
+          <div>
+            <p>Uses one isolated closed-loop transducer per phase instead of shunts, keeping losses out of the 48 V path, with a single precision reference shared across channels so offsets track together — enabling the move from trapezoidal commutation to field-oriented control.</p>
+            <div class="p-meta">Altium · FOC · Current sensing · Power electronics</div>
+            <a class="p-link" href="../project-foc.html">Learn more →</a>
+          </div>
+          <div class="p-figure is-render"><img src="../assets/projects/foc-render.jpg" alt=""/></div>
+        </div>
+      </details>
+      <details class="proj">
+        <summary>
+          <div>
+            <div class="p-head"><span class="p-title">48→12 V Buck Converter</span><span class="p-year">2025</span></div>
+            <div class="p-org">Cornell Electric Vehicles</div>
+          </div>
+          <span class="p-thumb is-render"><img src="../assets/projects/buck-render.jpg" alt=""/></span>
+        </summary>
+        <div class="p-body">
+          <div>
+            <p>A standalone converter stepping 48 V to 12 V for the competition vehicle, built around a TI LM5013 with a Würth power inductor and a feedback divider setting the output. Full schematic, layout, solder, rework, and thermal-imaging validation.</p>
+            <div class="p-meta">Altium · Buck converter · Power electronics · LTspice</div>
+            <a class="p-link" href="../project-buck.html">Learn more →</a>
+          </div>
+          <div class="p-figure is-render"><img src="../assets/projects/buck-render.jpg" alt=""/></div>
+        </div>
+      </details>
+      <details class="proj">
+        <summary>
+          <div>
+            <div class="p-head"><span class="p-title">Analog Design &amp; Characterization</span><span class="p-year">2026</span></div>
+            <div class="p-org">Cornell ECE Labs</div>
+          </div>
+          <span class="p-thumb"><img src="../assets/projects/analog-filter.jpg" alt=""/></span>
+        </summary>
+        <div class="p-body">
+          <div>
+            <p>Built a sixth-order cascaded op-amp bandpass filter that recovered a hidden word from a modulated audio signal. Reverse-engineered unknown RLC black boxes from DC and AC measurements and characterized binary-weighted and R-2R ladder DACs on an SMU.</p>
+            <div class="p-meta">Circuits · Op amps · Filter design · Oscilloscopes</div>
+          </div>
+          <div class="p-figure"><img src="../assets/projects/analog-filter.jpg" alt=""/></div>
+        </div>
+      </details>
+
+      <p class="cat">Robotics &amp; Control</p>
+      <details class="proj">
+        <summary>
+          <div>
+            <div class="p-head"><span class="p-title">Robot Bring-Up &amp; Teleoperation</span><span class="p-year">2026</span></div>
+            <div class="p-org">Robotics Center of Silicon Valley</div>
+          </div>
+          <span class="p-thumb"><img src="../assets/projects/rcsv-franka.jpg" alt="" style="object-position:center 38%"/></span>
+        </summary>
+        <div class="p-body">
+          <div>
+            <p>Diagnosed and repaired motor, circuit, and wiring faults on the M1 mobile manipulator, then validated and teleoperated electrical and control systems across more than six platforms — arms, hands, and gloves — running live demos for researchers and clients.</p>
+            <div class="p-meta">Robotics · Hardware debug · Teleoperation · Motor control</div>
+          </div>
+          <div class="p-figure"><img src="../assets/projects/rcsv-franka.jpg" alt=""/></div>
+        </div>
+      </details>
+      <details class="proj">
+        <summary>
+          <div>
+            <div class="p-head"><span class="p-title">OpenArm Electrician &amp; Data Collection</span><span class="p-year">2026</span></div>
+            <div class="p-org">Robotics Center of Silicon Valley</div>
+          </div>
+          <span class="p-thumb"><img src="../assets/projects/rcsv-arms.jpg" alt="" style="object-position:center 58%"/></span>
+        </summary>
+        <div class="p-body">
+          <div>
+            <p>Assembled, wired, and tested OpenArm robots — motor interfacing, harnessing, soldering, CAN communication, and electrical debug — and built a data-collection pipeline, verifying full teleoperation before demos and shipments.</p>
+            <div class="p-meta">Robotics · Soldering · Motor interfacing · Data pipeline</div>
+          </div>
+          <div class="p-figure"><img src="../assets/projects/rcsv-arms.jpg" alt=""/></div>
+        </div>
+      </details>
+      <details class="proj">
+        <summary>
+          <div>
+            <div class="p-head"><span class="p-title">FRC Robot &amp; Autonomy</span><span class="p-year">2022/25</span></div>
+            <div class="p-org">Space Cookies · FRC 1868</div>
+          </div>
+          <span class="p-thumb"><img src="../assets/projects/frc-impact.jpg" alt=""/></span>
+        </summary>
+        <div class="p-body">
+          <div>
+            <p>As programming director of a 50+ person team, set up development workflows and wrote command-based control software: PID and feedforward tuning, autonomous scoring from odometry, anti-scrub drivetrain control, and mechanism interlocks. Qualified for Worlds twice; won a regional Innovation in Control award.</p>
+            <div class="p-meta">Java · PID + feedforward · Autonomous · Command-based</div>
+          </div>
+          <div class="p-figure"><img src="../assets/projects/frc-impact.jpg" alt=""/></div>
+        </div>
+      </details>
+
+      <p class="cat">Digital &amp; Software</p>
+      <details class="proj">
+        <summary>
+          <div>
+            <div class="p-head"><span class="p-title">16-Bit Adder Datapath on FPGA</span><span class="p-year">2026</span></div>
+            <div class="p-org">Cornell ECE 2300</div>
+          </div>
+          <span class="p-thumb is-render"><img src="../assets/projects/fpga-floorplan.jpg" alt=""/></span>
+        </summary>
+        <div class="p-body">
+          <div>
+            <p>Designed modular combinational logic in Verilog — gate-level full adders, a 16-bit carry-select adder, an RTL adder, and multiplexers — synthesized on FPGA in Quartus Prime, comparing ALUT area and critical-path timing. Verified with directed, randomized, and X-propagation testbenches.</p>
+            <div class="p-meta">Verilog · FPGA · Quartus · Timing analysis · Testbenches</div>
+          </div>
+          <div class="p-figure is-render"><img src="../assets/projects/fpga-floorplan.jpg" alt=""/></div>
+        </div>
+      </details>
+      <details class="proj">
+        <summary>
+          <div>
+            <div class="p-head"><span class="p-title">Tagalong Robot Builder</span><span class="p-year">2024/25</span></div>
+            <div class="p-org">Space Cookies Robotics</div>
+          </div>
+          <span class="p-thumb"><img src="../assets/projects/frc-robot.jpg" alt="" style="object-position:center 26%"/></span>
+        </summary>
+        <div class="p-body">
+          <div>
+            <p>An open-source CLI that generates robot control code from mechanism specs, removing boilerplate and giving ~3 weeks of lead time during build season. Ships a reusable library with unit tests, safety lockouts, simulation, and per-robot configuration. Earned a regional Impact Award.</p>
+            <div class="p-meta">Java · CLI tooling · Open source · Testing</div>
+            <a class="p-link" href="../project-tagalong.html">Learn more →</a>
+          </div>
+          <div class="p-figure"><img src="../assets/projects/frc-robot.jpg" alt=""/></div>
+        </div>
+      </details>
+    </section>
+
+    <!-- 04 CONTACT -->
+    <section id="contact">
+      <div class="shead"><span class="idx">04</span><h2>Contact</h2><span class="rule"></span></div>
+      <div class="contact">
+        <p class="big"><a href="#">aleena [at] cornell.edu</a></p>
+        <div class="clinks">
+          <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.8-2.05 3.7-2.05 3.96 0 4.69 2.6 4.69 5.98V21h-4v-5.3c0-1.26-.02-2.9-1.76-2.9-1.76 0-2.03 1.37-2.03 2.8V21H9z"/></svg>LinkedIn</a>
+          <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85l-.01 2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>GitHub</a>
+          <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v4h4"/></svg>Résumé</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+(function(){
+  var cvs = document.getElementById('ic');
+  var wrap = document.getElementById('icWrap');
+  if(!cvs) return;
+  var ctx = cvs.getContext('2d');
+  var SIZE = 264, CX = SIZE/2, CY = SIZE/2;
+  var FOCAL = 320, CAMX = -0.72;           // look-down tilt
+  var sinX = Math.sin(CAMX), cosX = Math.cos(CAMX);
+
+  var INK = [40,40,46], RED = [217,45,30];
+
+  // ---- symbol drawers (centered at 0,0, half-size r) ----
+  var SYM = [
+    function res(c,r){ // resistor zigzag
+      c.beginPath(); var n=6, w=r*1.8, x=-w/2, step=w/n;
+      c.moveTo(-r,0); c.lineTo(x,0);
+      for(var i=0;i<n;i++){ x+=step; c.lineTo(x, (i%2?-1:1)*r*0.55); }
+      c.lineTo(r,0); c.stroke();
+    },
+    function cap(c,r){ // capacitor
+      c.beginPath(); c.moveTo(-r,0); c.lineTo(-r*0.3,0); c.moveTo(r*0.3,0); c.lineTo(r,0); c.stroke();
+      c.beginPath(); c.moveTo(-r*0.3,-r*0.8); c.lineTo(-r*0.3,r*0.8);
+      c.moveTo(r*0.3,-r*0.8); c.lineTo(r*0.3,r*0.8); c.stroke();
+    },
+    function gnd(c,r){ // ground
+      c.beginPath(); c.moveTo(0,-r); c.lineTo(0,0); c.stroke();
+      c.beginPath(); c.moveTo(-r*0.9,0); c.lineTo(r*0.9,0);
+      c.moveTo(-r*0.55,r*0.45); c.lineTo(r*0.55,r*0.45);
+      c.moveTo(-r*0.22,r*0.9); c.lineTo(r*0.22,r*0.9); c.stroke();
+    },
+    function diode(c,r){ // diode
+      c.beginPath(); c.moveTo(-r,0); c.lineTo(-r*0.5,0); c.moveTo(r*0.5,0); c.lineTo(r,0); c.stroke();
+      c.beginPath(); c.moveTo(-r*0.5,-r*0.7); c.lineTo(-r*0.5,r*0.7); c.lineTo(r*0.5,0); c.closePath(); c.stroke();
+      c.beginPath(); c.moveTo(r*0.5,-r*0.7); c.lineTo(r*0.5,r*0.7); c.stroke();
+    },
+    function ind(c,r){ // inductor
+      c.beginPath(); var k=3, w=r*1.8, x0=-w/2, rad=w/(2*k);
+      c.moveTo(-r,0);
+      for(var i=0;i<k;i++){ c.arc(x0+rad+i*2*rad, 0, rad, Math.PI, 0, false); }
+      c.lineTo(r,0); c.stroke();
+    },
+    function node(c,r){ // junction dot
+      c.beginPath(); c.arc(0,0,r*0.5,0,7); c.fill();
+    }
+  ];
+
+  // ---- build IC point cloud: square QFN body in XZ plane, pins on 4 sides ----
+  var pts = [];
+  function add(x,y,z,s,red){ pts.push({bx:x,by:y,bz:z,sym:s,red:red||0,sxr:0,syr:0,szr:0}); }
+
+  var HALF = 46, N = 7;                       // body top face: N×N symbol grid
+  for(var i=0;i<N;i++) for(var j=0;j<N;j++){
+    var gx=-HALF+(2*HALF)*i/(N-1), gz=-HALF+(2*HALF)*j/(N-1);
+    add(gx, 7, gz, (i*3+j)%5, 0);
+  }
+  for(var bi=0;bi<4;bi++) for(var bj=0;bj<4;bj++) add(-42+28*bi,-7,-42+28*bj,5,0); // sparse underside
+  var PIN=[-36,-18,0,18,36];                  // 5 pins per side
+  for(var k=0;k<PIN.length;k++){
+    add(58,0,PIN[k],0,0);  add(70,0,PIN[k],5,0);
+    add(-58,0,PIN[k],0,0); add(-70,0,PIN[k],5,0);
+    add(PIN[k],0,58,0,0);  add(PIN[k],0,70,5,0);
+    add(PIN[k],0,-58,0,0); add(PIN[k],0,-70,5,0);
+  }
+  add(-40,8,-40,5,1);                         // pin-1 marker (red)
+
+  for(var m=0;m<pts.length;m++){              // scatter vector per symbol
+    var th=Math.random()*6.2832, ph=Math.acos(2*Math.random()-1), rr=74+Math.random()*58;
+    pts[m].sxr=Math.sin(ph)*Math.cos(th)*rr;
+    pts[m].syr=Math.cos(ph)*rr;
+    pts[m].szr=Math.sin(ph)*Math.sin(th)*rr;
+  }
+  var CORN=[[-HALF,7,-HALF],[HALF,7,-HALF],[HALF,7,HALF],[-HALF,7,HALF]]; // body plate corners
+
+  var angle=0, hover=0, hoverT=0, t=0, sinA=0, cosA=1;
+  wrap.addEventListener('pointerenter', function(){ hoverT=1; });
+  wrap.addEventListener('pointerleave', function(){ hoverT=0; });
+
+  function col(a,b,mm){ return 'rgb('+Math.round(a[0]+(b[0]-a[0])*mm)+','+Math.round(a[1]+(b[1]-a[1])*mm)+','+Math.round(a[2]+(b[2]-a[2])*mm)+')'; }
+  function proj(x,y,z){
+    var x1=x*cosA+z*sinA, z1=-x*sinA+z*cosA, y1=y;
+    var y2=y1*cosX-z1*sinX, z2=y1*sinX+z1*cosX;
+    var s=FOCAL/(FOCAL+z2);
+    return {x:CX+x1*s, y:CY-y2*s, s:s, z:z2};
+  }
+
+  function frame(){
+    t+=0.016;
+    hover += (hoverT-hover)*0.09;
+    var ease = hover<0.5 ? 2*hover*hover : 1-Math.pow(-2*hover+2,2)/2;
+    angle += 0.005 + hover*0.03;
+    sinA=Math.sin(angle); cosA=Math.cos(angle);
+    ctx.clearRect(0,0,SIZE,SIZE);
+
+    // body plate — makes the silhouette read as an IC; fades as symbols burst
+    var bodyA = 1-ease;
+    if(bodyA>0.02){
+      ctx.beginPath();
+      for(var ci=0;ci<4;ci++){ var pc=proj(CORN[ci][0],CORN[ci][1],CORN[ci][2]); ci?ctx.lineTo(pc.x,pc.y):ctx.moveTo(pc.x,pc.y); }
+      ctx.closePath();
+      ctx.fillStyle='rgba(28,28,32,'+(0.05*bodyA)+')';
+      ctx.strokeStyle='rgba(28,28,32,'+(0.20*bodyA)+')';
+      ctx.lineWidth=1.3; ctx.fill(); ctx.stroke();
+    }
+
+    var order=[];
+    for(var i2=0;i2<pts.length;i2++){
+      var p=pts[i2];
+      var jit = hover>0.01 ? Math.sin(t*3+i2)*3*hover : 0;
+      var lx=p.bx+(p.sxr-p.bx)*ease, ly=p.by+(p.syr-p.by)*ease+jit, lz=p.bz+(p.szr-p.bz)*ease;
+      var pr=proj(lx,ly,lz); pr.sym=p.sym; pr.red=p.red; order.push(pr);
+    }
+    order.sort(function(a,b){return a.z-b.z});
+
+    for(var jx=0;jx<order.length;jx++){
+      var o=order[jx];
+      var depth=Math.max(0,Math.min(1,(o.s-0.78)/0.42));
+      var r=5.2*o.s;
+      ctx.save();
+      ctx.translate(o.x,o.y);
+      ctx.globalAlpha=0.4+depth*0.55;
+      var mm = o.red ? Math.max(0.85,hover) : hover*0.9;
+      var c = col(INK,RED,mm);
+      ctx.strokeStyle=c; ctx.fillStyle=c;
+      ctx.lineWidth=Math.max(0.7, r*0.16);
+      ctx.lineCap='round'; ctx.lineJoin='round';
+      SYM[o.sym](ctx,r);
+      ctx.restore();
+    }
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+</script>
+</body>
+</html>
